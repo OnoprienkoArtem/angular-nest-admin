@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Register } from '../model/register.interface';
+import { PublicService } from '../public.service';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +15,24 @@ export class RegisterComponent implements OnInit {
   password = '';
   passwordConfirm = '';  
 
-  constructor() { }
+  constructor(private publicService: PublicService) { }
 
   ngOnInit(): void {
   }
 
   submit(): void {
+    const registerData: Register = {
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      password: this.password,
+      password_confirm: this.passwordConfirm,
+    }
 
+    this.publicService.register(registerData).subscribe(res => {
+      console.log(res);
+      
+    });
   }
 
 }
