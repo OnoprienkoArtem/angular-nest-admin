@@ -27,11 +27,10 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password,
       password_confirm: this.passwordConfirm,
-    }
+    }   
 
     this.publicService.register(registerData).subscribe(res => {
-      console.log(res);
-      
+      console.log(res);      
     });
   }
 
