@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Register } from '../model/register.interface';
 import { PublicService } from '../public.service';
 
@@ -15,7 +16,10 @@ export class RegisterComponent implements OnInit {
   password = '';
   passwordConfirm = '';  
 
-  constructor(private publicService: PublicService) { }
+  constructor(
+    private publicService: PublicService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -29,9 +33,7 @@ export class RegisterComponent implements OnInit {
       password_confirm: this.passwordConfirm,
     }   
 
-    this.publicService.register(registerData).subscribe(res => {
-      console.log(res);      
-    });
+    this.publicService.register(registerData).subscribe(() => this.router.navigate(['/login']));
   }
 
 }

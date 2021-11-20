@@ -11,6 +11,6 @@ export class PublicService {
   constructor(private http: HttpClient) { }
 
   public register(body: Register) {
-    return this.http.post(`${environment.api}register`, body);
+    return this.http.post(`${environment.api}/register`, body);
   }
 }
