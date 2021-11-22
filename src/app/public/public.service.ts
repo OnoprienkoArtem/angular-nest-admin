@@ -16,6 +16,6 @@ export class PublicService {
   }
 
   public login(body: Login) {
-    return this.http.post(`${environment.api}/login`, body);
+    return this.http.post(`${environment.api}/login`, body, {withCredentials: true});
   }
 }
