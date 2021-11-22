@@ -35,5 +35,4 @@ export class RegisterComponent implements OnInit {
 
     this.publicService.register(registerData).subscribe(() => this.router.navigate(['/login']));
   }
-
 }
