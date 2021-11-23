@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Login } from './model/login.interface';
-import { Register } from './model/register.interface';
+import { Login } from '../public/model/login.interface';
+import { Register } from '../public/model/register.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PublicService {
+export class AuthService {
 
   constructor(private http: HttpClient) { }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { Register } from '../model/register.interface';
-import { PublicService } from '../public.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   passwordConfirm = '';  
 
   constructor(
-    private publicService: PublicService,
+    private authService: AuthService,
     private router: Router,
   ) { }
 
@@ -33,6 +33,6 @@ export class RegisterComponent implements OnInit {
       password_confirm: this.passwordConfirm,
     }   
 
-    this.publicService.register(registerData).subscribe(() => this.router.navigate(['/login']));
+    this.authService.register(registerData).subscribe(() => this.router.navigate(['/login']));
   }
 }
