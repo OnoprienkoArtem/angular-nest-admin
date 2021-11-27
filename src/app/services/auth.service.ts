@@ -10,7 +10,7 @@ import { Register } from '../public/model/register.interface';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public register(body: Register): Observable<any> {
     return this.http.post(`${environment.api}/register`, body);

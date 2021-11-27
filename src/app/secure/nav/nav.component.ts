@@ -7,13 +7,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  user: any;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.user().subscribe(res => {
-      console.log(res);
-      
+      this.user = res;      
     })
   }
 
