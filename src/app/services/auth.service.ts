@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
-import { Login } from '../public/model/login.interface';
-import { Register } from '../public/model/register.interface';
+import { Login } from '../interfaces/login.interface';
+import { Register } from '../interfaces/register.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class AuthService {
 
   public user(): Observable<User> {
     return this.http.get<User>(`${environment.api}/user`, {withCredentials: true});
+  }
+
+  public logout(): Observable<void> {
+    return this.http.post<void>(`${environment.api}/logout`, {}, {withCredentials: true});
   }
 }
