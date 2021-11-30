@@ -9,12 +9,13 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./secure.component.scss']
 })
 export class SecureComponent implements OnInit {
+  user!: User;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.user().subscribe(
-      () => console.log('success'),
+      (user: User) => this.user = user,
       () => this.router.navigate(['/login']),
       );
   }
