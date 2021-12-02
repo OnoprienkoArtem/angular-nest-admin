@@ -3,12 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './public/login/login.component';
 import { PublicComponent } from './public/public.component';
 import { RegisterComponent } from './public/register/register.component';
+import { ProfileComponent } from './secure/profile/profile.component';
 import { SecureComponent } from './secure/secure.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SecureComponent
+    component: SecureComponent,
+    children: [
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ]
   },
   {
     path: '',
@@ -20,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
       }
     ]
   },

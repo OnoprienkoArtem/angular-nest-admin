@@ -4,6 +4,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NavComponent } from './nav/nav.component';
 import { SecureComponent } from './secure.component';
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     MenuComponent,
     SecureComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
