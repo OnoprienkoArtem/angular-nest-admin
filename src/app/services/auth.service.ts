@@ -28,4 +28,12 @@ export class AuthService {
   public logout(): Observable<void> {
     return this.http.post<void>(`${environment.api}/logout`, {});
   }
+
+  public updateInfo(data: any): Observable<User> {
+    return this.http.put<User>(`${environment.api}/users/info`, data);
+  }
+
+  public updatePassword(data: any): Observable<User> {
+    return this.http.put<User>(`${environment.api}/users/password`, data);
+  }
 }

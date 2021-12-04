@@ -1,5 +1,5 @@
 <h3 class="mt-4">Account information</h3>
-<form [formGroup]="infoForm">
+<form [formGroup]="infoForm" (submit)="infoSubmit()">
   <section class="form-section">
     <div class="mb-3">
       <label>First name</label>
@@ -19,7 +19,7 @@
 </form>
 
 <h3 class="mt-4">Change Password</h3>
-<form [formGroup]="passwordForm">
+<form [formGroup]="passwordForm" (submit)="passwordSubmit()">
   <section class="form-section">
     <div class="mb-3">
       <label>Password</label>
