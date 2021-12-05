@@ -9,14 +9,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  @Input() user!: User;
+  user!: User;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    Auth.userEmitter.subscribe((user: User): void => {
-      this.user = user;
-    });
+    Auth.userEmitter.subscribe((user: User) => this.user = user);
   }
 
   logout(): void {
