@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SecureComponent,
     children: [
       {
-        path: '',
+        path: 'dashboard',
         component: DashboardComponent,
       },
       {
