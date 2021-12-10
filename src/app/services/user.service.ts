@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  all(): Observable<User[]> {
-    return this.http.get<User[]>(this.endpoint);
+  all(page: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.endpoint}?page=${page}`);
   }
 }
