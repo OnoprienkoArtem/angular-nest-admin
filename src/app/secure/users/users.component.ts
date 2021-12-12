@@ -29,8 +29,17 @@ export class UsersComponent implements OnInit {
     if (this.page === this.lastPage) {
       return;
     }
-    
+
     this.page++;
+    this.load();
+  }
+
+  prevPage(): void {
+    if (this.page === 1) {
+      return;
+    }
+
+    this.page--;
     this.load();
   }
 }
