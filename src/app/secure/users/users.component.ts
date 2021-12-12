@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UsersComponent implements OnInit {
   users: User[] = [];
   page = 1;
+  lastPage!: number;
 
   constructor(private userService: UserService) { }
 
@@ -20,10 +21,15 @@ export class UsersComponent implements OnInit {
   load(): void {
     this.userService.all(this.page).subscribe((response: any) => {
       this.users = response.data;
+      this.lastPage = response.meta.last_page;
     })
   }
 
   nextPage(): void {
+    if (this.page === this.lastPage) {
+      return;
+    }
+    
     this.page++;
     this.load();
   }
