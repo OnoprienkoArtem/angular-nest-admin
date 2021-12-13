@@ -15,7 +15,11 @@
         <td>{{user.first_name}} {{user.last_name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role.name}}</td>
-        <td></td>
+        <td>
+          <div class="btn-group mr-2">
+            <a class="btn btn-sm btn-outline-secondary" (click)="delete(user.id)">Delete</a>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -24,10 +28,10 @@
 <nav>
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link" href="ucascript:void(0)" (click)="prevPage()">Previous</a>
+      <a class="page-link" (click)="prevPage()">Previous</a>
     </li>
     <li class="page-item">
-      <a class="page-link" href="jucascript:void(0)" (click)="nextPage()">Next</a>
+      <a class="page-link" (click)="nextPage()">Next</a>
     </li>
   </ul>
 </nav>

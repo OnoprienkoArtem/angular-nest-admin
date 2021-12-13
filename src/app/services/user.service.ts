@@ -15,4 +15,8 @@ export class UserService {
   all(page: number): Observable<User[]> {
     return this.http.get<User[]>(`${this.endpoint}?page=${page}`);
   }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.endpoint}/${id}`);
+  }
 }
