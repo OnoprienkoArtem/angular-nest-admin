@@ -14,7 +14,9 @@
   <div class="mb-3">
     <label>Role</label>    
     <select name="role_id" class="form-control" formControlName="role_id">
-      <option value="">Select</option>
+      <option value="" *ngFor="let role of roles">
+        {{role.name}}
+      </option>
     </select>
   </div>
 
