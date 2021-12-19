@@ -20,6 +20,10 @@ export class UserService {
     return this.http.post<User>(this.endpoint, data);
   }
 
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.endpoint}/${id}`);
+  }
+
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.endpoint}/${id}`);
   }
