@@ -49,7 +49,7 @@ export class UserEditComponent implements OnInit {
   }
 
   submit(): void {
-    this.userService.create(this.form.getRawValue()).subscribe(() => {
+    this.userService.update(this.id, this.form.getRawValue()).subscribe(() => {
       this.router.navigate(['/users']);
     });
   }
