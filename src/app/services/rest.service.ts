@@ -11,8 +11,10 @@ export abstract class RestService {
 
   constructor(protected http: HttpClient) { }
 
-  all(page: number): Observable<any> {
-    return this.http.get(`${this.endpoint}?page=${page}`);
+  all(page?: number): Observable<any> {
+    const pageParam = page ? `?page=${page}` : '';
+
+    return this.http.get(`${this.endpoint}${pageParam}`);
   }
 
   create(data: any): Observable<any> {
