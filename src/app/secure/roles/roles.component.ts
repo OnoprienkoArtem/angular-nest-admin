@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Role } from 'src/app/interfaces/role';
+import { RoleService } from 'src/app/services/role.service';
 
 @Component({
   selector: 'app-roles',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
+  roles: Role[] = [];
 
-  constructor() { }
+  constructor(private roleService: RoleService) { }
 
   ngOnInit(): void {
+    this.roleService.all().subscribe((roles: Role[]) => {
+      this.roles = roles;
+    });
+  }
+
+  delete(id: number): void {
+    if (confirm('Are you sure you wont to delete this record?')) {
+      this.roleService.delete(id).subscribe(() => {
+        this.roles = this.roles.filter(r => r.id !== id);
+      });
+    }
   }
 
 }
