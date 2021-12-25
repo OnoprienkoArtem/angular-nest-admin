@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { RolesComponent } from './roles/roles.component';
+import { RoleCreateComponent } from './roles/role-create/role-create.component';
 
 
 
@@ -25,6 +26,7 @@ import { RolesComponent } from './roles/roles.component';
     UserCreateComponent,
     UserEditComponent,
     RolesComponent,
+    RoleCreateComponent,
   ],
   imports: [
     CommonModule,
