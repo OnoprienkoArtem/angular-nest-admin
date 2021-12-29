@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Permission } from 'src/app/interfaces/permission';
 import { PermissionService } from 'src/app/services/permission.service';
 
@@ -19,12 +19,25 @@ export class RoleCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: ''
+      name: '',
+      permissions: this.formBuilder.array([])
     });
 
     this.permissionService.all().subscribe(permissions => {
       this.permissions = permissions;
+      this.permissions.forEach(p => {
+        this.permissionArray.push(
+          this.formBuilder.group({
+            value: false,
+            id: p.id
+          })
+        );
+      })
     });
+  }
+
+  get permissionArray(): FormArray {
+    return this.form.get('permissions') as FormArray;
   }
 
 }
