@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Permission } from 'src/app/interfaces/permission';
 import { PermissionService } from 'src/app/services/permission.service';
+import { RoleService } from 'src/app/services/role.service';
 
 @Component({
   selector: 'app-role-create',
@@ -15,6 +17,8 @@ export class RoleCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private permissionService: PermissionService,
+    private roleService: RoleService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +42,16 @@ export class RoleCreateComponent implements OnInit {
 
   get permissionArray(): FormArray {
     return this.form.get('permissions') as FormArray;
+  }
+
+  submit(): void {
+    const formData = this.form.getRawValue();
+    const data = {
+      name: formData.name,
+      permissions: formData.permissions.filter((p: {value: boolean}) => p.value === true).map((p: Permission) => p.id),
+    };
+
+    this.roleService.create(data).subscribe(() => this.router.navigate(['/roles']));
   }
 
 }
