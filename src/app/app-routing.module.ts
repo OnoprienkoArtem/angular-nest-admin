@@ -50,6 +50,10 @@ const routes: Routes = [
         path: 'roles/create',
         component: RoleCreateComponent,
       },
+      {
+        path: 'roles/:id/edit',
+        component: RoleEditComponent,
+      },
     ]
   },
   {
