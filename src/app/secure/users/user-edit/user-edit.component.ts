@@ -38,7 +38,7 @@ export class UserEditComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
 
-    this.userService.getUser(this.id).subscribe((user: User) => {
+    this.userService.get(this.id).subscribe((user: User) => {
       this.form.patchValue({
         first_name: user.first_name,
         last_name: user.last_name,

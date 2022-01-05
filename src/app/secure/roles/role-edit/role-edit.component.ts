@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Permission } from 'src/app/interfaces/permission';
 import { PermissionService } from 'src/app/services/permission.service';
 import { RoleService } from 'src/app/services/role.service';
@@ -13,12 +13,14 @@ import { RoleService } from 'src/app/services/role.service';
 export class RoleEditComponent implements OnInit {
   form!: FormGroup;
   permissions: Permission[] = [];
+  id!: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private permissionService: PermissionService,
     private roleService: RoleService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -38,10 +40,21 @@ export class RoleEditComponent implements OnInit {
         );
       })
     });
+
+    this.id = this.route.snapshot.params.id;
+
+    this.roleService.get(this.id).subscribe(role => {
+      this.form.patchValue({
+        name: role.name,
+      });
+    });
   }
 
   get permissionArray(): FormArray {
     return this.form.get('permissions') as FormArray;
   }
 
+  submit(): void {
+
+  }
 }

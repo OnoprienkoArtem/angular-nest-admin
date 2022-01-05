@@ -21,7 +21,7 @@ export abstract class RestService {
     return this.http.post(this.endpoint, data);
   }
 
-  getUser(id: number): Observable<any> {
+  get(id: number): Observable<any> {
     return this.http.get(`${this.endpoint}/${id}`);
   }
 
