@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Permission } from 'src/app/interfaces/permission';
+import { Role } from 'src/app/interfaces/role';
 import { PermissionService } from 'src/app/services/permission.service';
 import { RoleService } from 'src/app/services/role.service';
 
@@ -43,9 +44,19 @@ export class RoleEditComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
 
-    this.roleService.get(this.id).subscribe(role => {
+    this.roleService.get(this.id).subscribe((role: Role) => {
+      const values = this.permissions.map(p => {
+        const selected: boolean | undefined = role.permissions?.some(r => r.id === p.id);
+        
+        return {
+          value: selected,
+          id: p.id
+        }
+      });
+
       this.form.patchValue({
         name: role.name,
+        permissions: values
       });
     });
   }
