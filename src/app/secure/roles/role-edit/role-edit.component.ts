@@ -66,6 +66,12 @@ export class RoleEditComponent implements OnInit {
   }
 
   submit(): void {
+    const formData = this.form.getRawValue();
+    const data = {
+      name: formData.name,
+      permissions: formData.permissions.filter((p: {value: boolean}) => p.value === true).map((p: Permission) => p.id),
+    };
 
+    this.roleService.update(this.id, data).subscribe(() => this.router.navigate(['/roles']));
   }
 }
