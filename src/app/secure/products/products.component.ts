@@ -9,7 +9,6 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-  page = 1;
   lastPage!: number;
 
   constructor(private productService: ProductService) { }
@@ -18,29 +17,11 @@ export class ProductsComponent implements OnInit {
     this.load();
   }
 
-  load(): void {
-    this.productService.all(this.page).subscribe(products => {
+  load(page = 1): void {
+    this.productService.all(page).subscribe(products => {
       this.products = products;
       this.lastPage = products.meta.last_page;
     });
-  }
-
-  nextPage(): void {
-    if (this.page === this.lastPage) {
-      return;
-    }
-
-    this.page++;
-    this.load();
-  }
-
-  prevPage(): void {
-    if (this.page === 1) {
-      return;
-    }
-
-    this.page--;
-    this.load();
   }
 
   delete(id: number) {
