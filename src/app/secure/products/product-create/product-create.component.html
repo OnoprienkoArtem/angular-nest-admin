@@ -11,7 +11,10 @@
     </div>
     <div class="mb-3">
       <label>Image</label>
-      <input type="text" class="form-control" name="image" formControlName="image">
+      <div class="input-group">
+        <input type="text" class="form-control" name="image" formControlName="image">
+        <app-upload></app-upload>
+      </div>      
     </div>
     <div class="mb-3">
       <label>Price</label>
