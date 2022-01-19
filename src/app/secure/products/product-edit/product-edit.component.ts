@@ -33,7 +33,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   submit(): void {
-    this.productService.create(this.form.getRawValue()).subscribe(() => {
+    this.productService.update(this.id, this.form.getRawValue()).subscribe(() => {
       this.router.navigate(['/products']);
     });
   }
