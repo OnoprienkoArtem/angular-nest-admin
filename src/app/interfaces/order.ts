@@ -5,5 +5,6 @@ export interface Order {
   first_name: string;
   last_name: string;
   email: string;
+  total: number;
   order_items: OrderItem[];
 }
