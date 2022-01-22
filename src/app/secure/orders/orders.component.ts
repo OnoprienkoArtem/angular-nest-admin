@@ -9,6 +9,7 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];
+  lastPage!: number;
 
   constructor(private orderService: OrderService) { }
 
@@ -17,6 +18,9 @@ export class OrdersComponent implements OnInit {
   }
 
   load(page = 1): void {
-    this.orderService.all(page).subscribe(res => this.orders = res.data);
+    this.orderService.all(page).subscribe(res => {
+      this.orders = res.data;
+      this.lastPage = res.meta.last_page;
+    });
   }
 }
