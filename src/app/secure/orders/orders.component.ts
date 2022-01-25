@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/interfaces/order';
 import { OrderService } from 'src/app/services/order.service';
@@ -5,7 +6,19 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  styleUrls: ['./orders.component.scss'],
+  animations: [
+    trigger('tableState', [
+      state('show', style({
+        maxHeight: '150px'
+      })),
+      state('hide', style({
+        maxHeight: 0
+      })),
+      transition('show => hide', animate('1000ms ease-in')),
+      transition('hide => show', animate('1000ms ease-out'))
+    ])
+  ]
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];
