@@ -28,4 +28,8 @@ export class OrdersComponent implements OnInit {
   select(id: number): void {
     this.selected = this.selected === id ? 0 : id;
   }
+
+  itemState(id: number): string {
+    return this.selected === id ? 'show' : 'hide';
+  }
 }
