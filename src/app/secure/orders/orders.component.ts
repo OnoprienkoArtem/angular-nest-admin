@@ -45,4 +45,10 @@ export class OrdersComponent implements OnInit {
   itemState(id: number): string {
     return this.selected === id ? 'show' : 'hide';
   }
+
+  export(): void {
+    this.orderService.export().subscribe(res => {
+      
+    });
+  }
 }
