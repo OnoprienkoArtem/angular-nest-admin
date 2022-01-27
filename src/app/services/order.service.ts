@@ -10,6 +10,6 @@ export class OrderService extends RestService {
   endpoint: string = `${environment.api}/orders`;
 
   export(): Observable<any> {
-    return this.http.post(`${environment.api}/export`, {});
+    return this.http.post(`${environment.api}/export`, {}, {responseType: 'blob'});
   }
 }
