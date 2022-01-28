@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as c3 from 'c3';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import * as c3 from 'c3';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
     let chart = c3.generate({
